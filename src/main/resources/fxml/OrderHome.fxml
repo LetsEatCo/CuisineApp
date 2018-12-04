@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="rootAnchor" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1492.0" prefWidth="1800.0" stylesheets="@../assets/css/app.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.fr.esgi.cuisine.controllers.MainController">
+   <children>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1492.0" prefWidth="447.0" spacing="20.0">
+         <children>
+            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#adminRegistration" prefHeight="200.0" prefWidth="200.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="150.0" />
+               </VBox.margin>
+            </JFXButton>
+            <VBox fx:id="inPreparationBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDropped="#handleOrderDropInPreparation" onDragOver="#handleDragOverEvent" prefHeight="400.0" prefWidth="400.0" styleClass="in-preparation-box">
+               <children>
+                  <Label text="IN PREPARATION">
+                     <styleClass>
+                        <String fx:value="operations-label" />
+                        <String fx:value="in-preparation-label" />
+                     </styleClass>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+            <VBox fx:id="readyBox" alignment="CENTER" layoutX="10.0" layoutY="556.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDropped="#handleOrderDropInReady" onDragOver="#handleDragOverEvent" prefHeight="400.0" prefWidth="400.0" styleClass="ready-box">
+               <children>
+                  <Label text="READY">
+                     <styleClass>
+                        <String fx:value="operations-label" />
+                        <String fx:value="ready-label" />
+                     </styleClass>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1492.0" prefWidth="1300.0" spacing="10.0">
+         <children>
+            <HBox fx:id="ordersContainer" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1300.0" style="-fx-border-color: #f44336;; -fx-border-radius: 20;">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="toMarkReadyContainer" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1300.0" style="-fx-border-color: #ff8f00; -fx-border-radius: 20;">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

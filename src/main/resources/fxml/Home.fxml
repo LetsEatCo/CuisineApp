@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1492.0" prefWidth="1800.0" styleClass="home-background" stylesheets="@../assets/css/app.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.fr.esgi.cuisine.controllers.MainController">
+    <children>
+        <JFXButton onAction="#placeToEat" prefHeight="1492.0" prefWidth="1800.0">
+         <font>
+            <Font name="Arvo Bold" size="60.0" />
+         </font>
+         <graphic>
+            <Label styleClass="label-font" text="Touch To Start..." />
+         </graphic></JFXButton>
+    </children>
+</VBox>

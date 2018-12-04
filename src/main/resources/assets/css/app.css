@@ -1,0 +1,138 @@
+@font-face {
+    font-family: "Secular One";
+    src: url("../fonts/Secular_One/SecularOne-Regular.ttf");
+}
+
+.label-font {
+    -fx-font-family: "Secular One";
+    -fx-font-size: 60;
+}
+
+.focus-product-element-choice{
+    -fx-font-family: "Secular One";
+    -fx-font-size: 40;
+    -fx-font-weight: bold;
+}
+
+.btn{
+    -fx-font-size: 30;
+    -fx-background-color: transparent;
+    -fx-font-family: "Secular One";
+}
+
+.btn-black{
+
+    -fx-font-size: 20;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-family: "Secular One";
+    -fx-background-radius: 4em;
+}
+.btn:hover{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0px;
+    -fx-border-color: black;
+    -fx-border-width: 0px 0px 0px 5px;
+    -fx-border-style: solid;
+}
+
+.btn-transparent{
+
+    -fx-font-family: "Secular One";
+    -fx-font-size: 30;
+    -fx-background-color: transparent;
+
+}
+
+.box-shadow{
+    -fx-border-color: #555555;
+    -fx-border-radius: 10;
+}
+
+.home-background {
+
+    /*-fx-background-image: url("../images/HeroImage-1.jpg");*/
+    -fx-background-repeat: no-repeat;
+    -fx-fill-height: 100%;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.location-background {
+
+    /*-fx-background-image: url("../images/cafe_restaurant_3.jpg");*/
+    -fx-background-repeat: no-repeat;
+    -fx-fill-height: 100%;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.option-price{
+
+    -fx-font-size: 20;
+    -fx-font-family: "Secular One";
+    -fx-text-fill: #00c853 ;
+}
+
+.option-container{
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0px 0px 0px 5px;
+}
+
+.product-element-container{
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0px 0px 0px 3px;
+}
+
+.product-element-label{
+    -fx-font-family: "Secular One";
+    -fx-font-size: 20;
+}
+
+
+
+.in-preparation-box {
+
+    -fx-background-color: #ff8f00;
+}
+
+.ready-box {
+    -fx-background-color: #00CC99 ;
+}
+
+.operations-label {
+
+    -fx-font-family: "Secular One";
+    -fx-font-weight: bold;
+    -fx-font-size: 40;
+}
+
+.ready-label {
+    -fx-text-fill:  white;
+}
+
+.in-preparation-label{
+    -fx-text-fill: white;
+}
+.in-preparation-box, .ready-box {
+    -fx-border-width: 10;
+    -fx-border-radius: 200;
+    -fx-background-radius: 20em;
+}
+
+.order-coming {
+    -fx-border-color: #f44336;
+    -fx-border-width: 4;
+}
+
+.in-preparation-on-set {
+    -fx-border-color: #ff8f00;
+    -fx-border-width: 4;
+}
+
+.order-coming,.in-preparation-on-set {
+    -fx-font-size: 30;
+    -fx-border-radius: 20;
+    -fx-font-weight: bold;
+    -fx-font-family: "Secular One";
+}
