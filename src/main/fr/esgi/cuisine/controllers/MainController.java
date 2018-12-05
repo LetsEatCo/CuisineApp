@@ -6,6 +6,8 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -24,6 +26,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Optional;
 
 @Component
 public class MainController implements FxmlController{
@@ -54,8 +57,6 @@ public class MainController implements FxmlController{
 
     @FXML
     private JFXPasswordField passwordInput;
-
-    private ArrayList<Order> ordersArray = new ArrayList<>();
 
     private int adminCounter = 0;
     private final StageManagerHelper stageManagerHelper;
@@ -161,9 +162,20 @@ public class MainController implements FxmlController{
     void handleOrderDropInReady(DragEvent event) throws IOException, ParseException {
 
         String reference = event.getDragboard().getString();
-        //TODO: Alter confirm
 
-        removeObject(reference);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Mark As Ready");
+        alert.setHeaderText(null);
+        alert.setContentText("Order Ready ?");
+
+        Optional<ButtonType> action = alert.showAndWait();
+
+        if(action.get() == ButtonType.OK){
+
+            removeObject(reference);
+
+        }
+
 
     }
 
