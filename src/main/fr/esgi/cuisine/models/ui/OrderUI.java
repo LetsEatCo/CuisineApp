@@ -19,16 +19,16 @@ public class OrderUI extends Pane {
     private String uuid;
     private VBox root = new VBox();
 
-    public OrderUI(Order order, MainController mainController) {
+    public OrderUI(Order order) {
 
         this.uuid = order.getUuid();
-
 
         HBox head = new HBox();
         head.setAlignment(Pos.CENTER);
         root.setAlignment(Pos.CENTER_LEFT);
         root.setSpacing(15);
-        root.setId(order.getReference());
+        root.setPrefHeight(400);
+        root.setMinHeight(root.getPrefHeight());
 
         this.setOnDragDetected(event -> {
             Dragboard db = startDragAndDrop(TransferMode.ANY);
@@ -56,8 +56,8 @@ public class OrderUI extends Pane {
     }
 
     public void setInPreparation(boolean inPreparation) {
-        root.getStyleClass().removeAll();
-        if(!inPreparation){
+        root.getStyleClass().clear();
+        if(inPreparation){
             root.getStyleClass().add("in-preparation-on-set");
         }
         else root.getStyleClass().add("order-coming");
@@ -72,7 +72,4 @@ public class OrderUI extends Pane {
         return uuid;
     }
 
-    public VBox getRoot() {
-        return root;
-    }
 }

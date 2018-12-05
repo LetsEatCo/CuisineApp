@@ -2,18 +2,17 @@ package main.fr.esgi.cuisine.controllers;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.input.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import main.fr.esgi.cuisine.helpers.StageManagerHelper;
 import main.fr.esgi.cuisine.helpers.UIHelper;
 import main.fr.esgi.cuisine.models.Order;
-import main.fr.esgi.cuisine.models.StoreLogin;
 import main.fr.esgi.cuisine.models.ui.OrderUI;
 import main.fr.esgi.cuisine.routes.StoreRouter;
 import main.fr.esgi.cuisine.views.FxmlView;
@@ -56,6 +55,8 @@ public class MainController implements FxmlController{
     @FXML
     private JFXPasswordField passwordInput;
 
+    private ArrayList<Order> ordersArray = new ArrayList<>();
+
     private int adminCounter = 0;
     private final StageManagerHelper stageManagerHelper;
     private ArrayList<Order> orders;
@@ -69,8 +70,6 @@ public class MainController implements FxmlController{
 
     @FXML
     void login() throws IOException, ParseException {
-
-        System.out.println("Login Pressed!");
 
         String email = emailInput.getText();
         String password = passwordInput.getText();
@@ -100,11 +99,9 @@ public class MainController implements FxmlController{
 
     @Override
     public void initialize() {
-        rootAnchor.setOpacity(0);
         UIHelper.makeFadeInTransition(rootAnchor);
-        OrderUI orderUI = new OrderUI(orders.get(0), this);
-
-        ordersContainer.getChildren().add(orderUI);
+        Thread dummyOrdersThread = new Thread(this::dummyOrders);
+        dummyOrdersThread.start();
 
     }
 
@@ -122,7 +119,6 @@ public class MainController implements FxmlController{
 
         String reference = event.getDragboard().getString();
 
-        System.out.println("I'm here maybe back");
         setInPreparation(reference);
 
     }
@@ -164,8 +160,6 @@ public class MainController implements FxmlController{
     @FXML
     void handleOrderDropInReady(DragEvent event) throws IOException, ParseException {
 
-        System.out.println("Product Ready !");
-
         String reference = event.getDragboard().getString();
         //TODO: Alter confirm
 
@@ -176,7 +170,6 @@ public class MainController implements FxmlController{
     private void removeObject(String reference) throws IOException, ParseException {
 
         OrderUI toDelete = null;
-        System.out.println("Reference:" + reference);
         for (Node child : toMarkReadyContainer.getChildren()) {
 
             System.out.println(child.toString());
@@ -187,11 +180,36 @@ public class MainController implements FxmlController{
 
         if(toDelete != null){
 
-
-            System.out.println(toDelete.getUuid());
             StoreRouter.updateOrderStatus(toDelete.getUuid(), 2);
             toMarkReadyContainer.getChildren().remove(toDelete);
         }
 
     }
+
+    private void dummyOrders() {
+
+            try {
+
+                final int[] dummyCounter = {0};
+                while (true){
+
+                    Thread.sleep(10000);
+
+                    new Thread(() -> Platform.runLater(() -> {
+
+                        Order dummy = new Order("uuid-"+ dummyCounter[0],"Super-Reference-"+ dummyCounter[0], true);
+                        OrderUI orderUI = new OrderUI(dummy);
+                        ordersContainer.getChildren().add(orderUI);
+                        ++dummyCounter[0];
+
+                    })).start();
+
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+    }
+
 }
+
